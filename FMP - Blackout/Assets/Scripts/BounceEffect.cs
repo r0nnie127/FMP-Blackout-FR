@@ -11,18 +11,50 @@ public class BounceEffect : MonoBehaviour
 
     public void StartBounce()
     {
-
+        StartCoroutine(BounceHandler());
     }
 
-    private IEnumerator(Transform transform)
+    private IEnumerator BounceHandler()
     {
         Vector3 startPosition = transform.position;
         float localHeight = bounceHeight;
         float localDuration = bounceDuration;
 
-        for(int i=0; i < bounceCount, i++)
+        for(int i=0; i < bounceCount; i++)
         {
+            yield return Bounce(startPosition, localHeight, localDuration / 2);
 
+            localHeight *= 0.5f;
+
+            localDuration *= 0.5f;
+        }
+
+        transform.position = startPosition;
+    }
+
+    private IEnumerator Bounce(Vector3 start, float height, float duration)
+    {
+        Vector3 peak = start + Vector3.up * height;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            transform.position = Vector3.Lerp(start, peak, elapsed / duration);
+
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            transform.position = Vector3.Lerp(peak, start, elapsed / duration);
+
+            elapsed += Time.deltaTime;
+
+            yield return null;
         }
     }
 }
