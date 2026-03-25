@@ -1,5 +1,6 @@
 using UnityEngine;
 
+<<<<<<< HEAD
 public class DrawerInteractable : MonoBehaviour, IInteractable
 { 
     public bool IsOpened { get; private set; }
@@ -47,4 +48,9 @@ public class DrawerInteractable : MonoBehaviour, IInteractable
             GetComponent<SpriteRenderer>().sprite = openedSprite;
         }
     }
+=======
+public class DrawerInteractable : MonoBehaviour { 
+
+
+>>>>>>> c65cb53f63b3266af7de31203df37ca7ed6901d3
 }

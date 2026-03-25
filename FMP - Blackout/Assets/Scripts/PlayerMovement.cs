@@ -31,9 +31,15 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = movementDirection * moveSpeed;
     }
 
+<<<<<<< HEAD
     public void OnMove(InputAction.CallbackContext context)
     {
         currentInput = context.ReadValue<Vector2>().normalized;
+=======
+    private void OnMove(InputValue value)
+    {
+        currentInput = value.Get<Vector2>().normalized;
+>>>>>>> c65cb53f63b3266af7de31203df37ca7ed6901d3
         movementDirection = GetDirection(currentInput);
     }
 
@@ -43,7 +49,11 @@ public class PlayerMovement : MonoBehaviour
         if (input.y > 0.01f)
         {
             lastDirection = "Up";
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> c65cb53f63b3266af7de31203df37ca7ed6901d3
             finalDirection = new Vector2(0, 1f);
         }
         else if (input.y < -0.01f)
